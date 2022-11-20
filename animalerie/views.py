@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Animal
 
-# Create your views here.
+def animal_list(request):
+    animals = Animal.objects.all()
+    return render(request, 'animalerie/animal_list.html', {"animals" : animals})

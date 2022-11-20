@@ -1,0 +1,11 @@
+{% extends 'animalerie/base.html' %}
+
+{% block content %}
+    {% for animal in animals %}
+        <div class="animal-grid-wrapper">
+            <div>{{ animal.id_animal }}</div>
+            <div>{{ animal.etat }}</div>
+            <div>{{ animal.lieu.id_equip }}</div>
+        </div>
+    {% endfor %}
+{% endblock %}
