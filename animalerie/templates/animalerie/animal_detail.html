@@ -2,6 +2,11 @@
 
 {% block content %}
 <div class="page-header">
+    {% if message != ''%}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+    {% endif %}
     <h1>
         <a href="/">{{ animal.id_animal }}</a>
     </h1>
