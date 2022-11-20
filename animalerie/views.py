@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import MoveForm
 from .models import Animal, Equipement
+from .controleur import changeLieu, majEtat
 
 def animal_list(request):
     animals = Animal.objects.all()
@@ -16,12 +17,24 @@ def animal_detail(request, id_animal):
     
     if form.is_valid():
         ancien_lieu = get_object_or_404(Equipement, id_equip=animal.lieu.id_equip)
+        
+        #Test if the change of place is possible
+        form.save(commit=False)
+        nouveau_lieu = get_object_or_404(Equipement, id_equip=animal.lieu.id_equip)
+        message = changeLieu(animal, nouveauLieu=nouveau_lieu)
+        print(message)
+        if message != "":
+            return redirect('animal_list')
+        
         ancien_lieu.disponibilite = "libre"
         ancien_lieu.save()
-        form.save()
-        nouveau_lieu = get_object_or_404(Equipement, id_equip=animal.lieu.id_equip)
+        
         nouveau_lieu.disponibilite = "occupé"
         nouveau_lieu.save()
+
+        majEtat(animal=animal, prochainLieu=nouveau_lieu)
+        
+        form.save()
         return redirect('animal_detail', id_animal=id_animal)
     
     return render(request,
