@@ -3,11 +3,24 @@
 {% load static %}
 
 {% block content %}
-    <div class="animal-grid-wrapper">
+    <div class="row">
     {% for animal in animals %}
-        <div><a href="animal/{{ animal.id_animal }}">{{ animal.id_animal }}</a></div>
-        <div>{{ animal.etat }}</div>
-        <div>{{ animal.lieu.id_equip }}</div>
+    <div class="animal-card col-md-4 col-sm-6">
+        <h2>{{ animal.id_animal }}</h2>
+        <img src="{{ animal.photo }}" class="animal-card-image"/>
+        <div class="animal-card-infos"><b>Type</b>: {{ animal.type }} | <b>Race</b> : {{ animal.race }}</div>
+        <div class="animal-card-situation">
+            <div class="animal-card-cell">
+                <h3>Etat</h3>
+                {{ animal.etat }}
+            </div>
+            <div class="animal-card-cell">
+                <h3>Lieu</h3>
+                {{ animal.lieu.id_equip }}
+            </div>
+        </div>
+        <button class="animal-card-btn"><a href="/animal/{{ animal.id_animal }}">Déplacer</a></button>
+    </div>
     {% endfor %}
     </div>
 {% endblock %}
