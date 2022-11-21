@@ -1,0 +1,53 @@
+.animal-wrapper {
+    display: flex;
+}
+
+.animal-card {
+    display: flex;
+    margin: 10px 20px;
+    padding: 5px 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 300px;
+    height: 500px;
+    background-color: #222;
+    color: white;
+}
+
+.animal-card-infos {
+    font-style: italic;
+    color: aliceblue;
+}
+
+.animal-card-situation {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.animal-card-image {
+    width: 200px;
+}
+
+.animal-card-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.animal-card-btn {
+    color: white;
+    background-color: #9d00d6;
+    border: none;
+    border-radius: 5px;
+    padding: 4;
+    margin: 8;
+}
+
+.animal-card-btn  a{
+    color: white;
+    text-decoration: none;
+}
