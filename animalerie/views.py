@@ -18,7 +18,7 @@ def animal_detail(request, id_animal, message=""):
     if form.is_valid():
         ancien_lieu = get_object_or_404(Equipement, id_equip=animal.lieu.id_equip)
         
-        form.save()
+        form.save(commit=False)
         nouveau_lieu = get_object_or_404(Equipement, id_equip=animal.lieu.id_equip)
         message = changeLieu(animal, nouveauLieu=nouveau_lieu)
 
