@@ -7,7 +7,7 @@ def changeLieu(animal, nouveauLieu):
     libre = (nouveauLieu.disponibilite == "libre")
     if lieu == "litiere" and animal.etat != "endormi":
         return "Désolé, " + animal.id_animal + " ne dort pas !"
-    if not libre:
+    if not libre and lieu != "litiere":
         return "Désolé, la " + lieu + " est déjà occupé."
     
     if lieu == "nid" and animal.etat != "fatigue":
