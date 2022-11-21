@@ -24,8 +24,6 @@ def animal_detail(request, id_animal, message=""):
 
         if message != "":
             return redirect('animal_detail_mes', id_animal=id_animal, message=message)
-        
-        form.save()
 
         ancien_lieu.disponibilite = "libre"
         ancien_lieu.save()
@@ -35,7 +33,7 @@ def animal_detail(request, id_animal, message=""):
 
         majEtat(animal=animal, prochainLieu=nouveau_lieu)
         animal.save()
-        
+
         return redirect('animal_detail', id_animal=id_animal)
     
     return render(request,
