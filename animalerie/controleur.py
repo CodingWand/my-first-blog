@@ -4,7 +4,7 @@ def changeLieu(animal, nouveauLieu):
     message = ''
 
     lieu = nouveauLieu.id_equip
-    libre = nouveauLieu.disponibilite == "libre"
+    libre = (nouveauLieu.disponibilite == "libre")
     if lieu == "litiere" and animal.etat != "endormi":
         return "Désolé, " + animal.id_animal + " ne dort pas !"
     if not libre:

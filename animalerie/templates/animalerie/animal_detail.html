@@ -3,19 +3,28 @@
 {% load static %}
 
 {% block content %}
-<div class="page-header">
+<div class="animal-card col-md-4 col-sm-6">
     {% if message != ''%}
         <div class="alert alert-danger" role="alert">
             {{message}}
         </div>
     {% endif %}
-    <h1>
-        <a href="/">{{ animal.id_animal }}</a>
-    </h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        <b> Changer : </b> {{ form.as_ul }}
-        <button type="submit" class="btn btn-outline-light">OK</button>
-        <a href="{% url 'animal_list' %}">Back</a>
-    </form>
+    <h2>{{ animal.id_animal }}</h2>
+    <img src="../{{ animal.photo }}" class="animal-card-image"/>
+    <div class="animal-card-infos"><b>Type</b>: {{ animal.type }} | <b>Race</b> : {{ animal.race }}</div>
+    <div class="animal-card-situation">
+        <div class="animal-card-cell">
+            <h3>Etat</h3>
+            {{ animal.etat }}
+        </div>
+        <div class="animal-card-cell">
+            <h3>Lieu</h3>
+            <form method="POST" class="post-form">{% csrf_token %}
+                <b> Changer : </b> {{ form.as_ul }}
+                <button type="submit" class="animal-card-btn">OK</button>
+                <a href="{% url 'animal_list' %}">Back</a>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

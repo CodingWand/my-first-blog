@@ -32,6 +32,7 @@ def animal_detail(request, id_animal, message=""):
         nouveau_lieu.save()
 
         majEtat(animal=animal, prochainLieu=nouveau_lieu)
+        animal.save()
         
         form.save()
         return redirect('animal_detail', id_animal=id_animal)
